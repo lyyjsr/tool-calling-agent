@@ -1,4 +1,4 @@
-from schemas import Intent,ToolResult
+from src.schemas import Intent,ToolResult
 
 
 def build_response(intent: Intent,tool_result: ToolResult | None =None) -> str:

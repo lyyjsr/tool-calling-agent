@@ -1,4 +1,4 @@
-from schemas import ToolResult
+from src.schemas import ToolResult
 def extract_expression(user_input :str)->str:
     text = user_input.strip()
     prefixes = ["calculate",'帮我计算','计算']

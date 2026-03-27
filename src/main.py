@@ -1,7 +1,7 @@
-from router import route_command
-from responder import build_response
-from schemas import Intent
-from tools import extract_expression,calculator_tool
+from src.router import route_command
+from src.responder import build_response
+from src.schemas import Intent
+from src.tools import extract_expression, calculator_tool
 def main():
     print("=== Tool-Calling Agent ===")
     user_input = input("请输入你的请求：").strip()
