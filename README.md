@@ -18,6 +18,22 @@
 - calculate
 - unknown
 
+## 当前已实现
+- CLI 输入输出
+- 基于规则的意图识别（router）
+- 第一个工具：calculator tool
+- 基础测试
+
+## 示例输入
+- calculate 2 + 2
+- 计算 5 * 6
+- 帮我计算 12 / 3
+
+## 示例输出
+- 计算结果是：4
+- 计算结果是：30
+- 计算结果是：4.0
+
 ## 项目结构
 ```bash
 tool-calling-agent/

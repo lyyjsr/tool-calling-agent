@@ -1,5 +1,5 @@
 from enum import Enum
-
+from dataclasses import dataclass
 
 class Intent(str, Enum):
     GREET = "greet"
@@ -7,3 +7,8 @@ class Intent(str, Enum):
     GITHUB = "github"
     CALCULATE = "calculate"
     UNKNOWN = "unknown"
+
+@dataclass
+class ToolResult:
+    success: bool
+    content: str
