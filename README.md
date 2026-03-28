@@ -21,18 +21,18 @@
 ## 当前已实现
 - CLI 输入输出
 - 基于规则的意图识别（router）
-- 第一个工具：calculator tool
+- calculator tool
+- GitHub user query tool
 - 基础测试
 
-## 示例输入
+## 当前支持的请求
 - calculate 2 + 2
 - 计算 5 * 6
-- 帮我计算 12 / 3
+- github openai
+- 查询 github 用户 torvalds
 
-## 示例输出
-- 计算结果是：4
-- 计算结果是：30
-- 计算结果是：4.0
+## 项目能力
+Agent 可根据用户输入识别意图，并路由到不同工具执行任务。目前已支持本地计算和 GitHub 用户公开信息查询。
 
 ## 项目结构
 ```bash

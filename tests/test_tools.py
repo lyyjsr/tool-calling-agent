@@ -1,4 +1,9 @@
-from src.tools import extract_expression,calculator_tool
+from src.tools import (
+    extract_expression,
+    calculator_tool,
+    extract_github_username,
+    github_user_tool,
+)
 
 def test_extract_expression():
     assert extract_expression("calculate 2 + 2 ")=="2 + 2"
