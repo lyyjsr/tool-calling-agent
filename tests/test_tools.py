@@ -23,3 +23,12 @@ def test_calculator_tool_invalid_expression():
 def test_calculator_tool_invalid_chars():
     result = calculator_tool("import os")
     assert result.success is False
+
+def test_extract_github_username():
+    assert extract_github_username("github openai") == "openai"
+    assert extract_github_username("查询 github 用户 torvalds") == "torvalds"
+    assert extract_github_username("github 用户名: openai") == "openai"
+
+def test_github_user_tool_empty():
+    result = github_user_tool("")
+    assert result.success is False
