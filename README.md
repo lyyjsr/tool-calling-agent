@@ -26,17 +26,29 @@
 - 基础会话历史（memory）
 - 基础测试
 
-## 支持的命令
-- calculate 2 + 2
-- github openai
-- history
-- exit
-
 ## 项目能力
 Agent 可根据用户输入识别意图，并路由到不同工具执行任务。目前已支持本地计算和 GitHub 用户公开信息查询。
 
 ## 新增能力
 Agent 现在支持在单次运行中保留最近若干轮会话历史，并可通过 `history` 命令查看上下文记录。
+
+## 当前架构
+项目当前采用以下模块划分：
+
+- `router.py`：负责用户输入的意图识别
+- `dispatcher.py`：负责根据意图分发到不同工具或系统能力
+- `tools.py`：封装具体工具逻辑
+- `memory.py`：维护会话历史
+- `responder.py`：统一生成用户可读响应
+
+## 当前能力
+- 多轮 CLI 交互
+- 基于规则的意图识别
+- calculator tool
+- GitHub user query tool
+- conversation memory
+- dispatcher 调度层
+
 
 ## 项目结构
 ```bash
