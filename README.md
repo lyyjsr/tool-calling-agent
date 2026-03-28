@@ -19,20 +19,24 @@
 - unknown
 
 ## 当前已实现
-- CLI 输入输出
+- CLI 多轮交互
 - 基于规则的意图识别（router）
 - calculator tool
 - GitHub user query tool
+- 基础会话历史（memory）
 - 基础测试
 
-## 当前支持的请求
+## 支持的命令
 - calculate 2 + 2
-- 计算 5 * 6
 - github openai
-- 查询 github 用户 torvalds
+- history
+- exit
 
 ## 项目能力
 Agent 可根据用户输入识别意图，并路由到不同工具执行任务。目前已支持本地计算和 GitHub 用户公开信息查询。
+
+## 新增能力
+Agent 现在支持在单次运行中保留最近若干轮会话历史，并可通过 `history` 命令查看上下文记录。
 
 ## 项目结构
 ```bash

@@ -6,9 +6,16 @@ class Intent(str, Enum):
     WEATHER = "weather"
     GITHUB = "github"
     CALCULATE = "calculate"
+    HISTORY = "history"
     UNKNOWN = "unknown"
 
 @dataclass
 class ToolResult:
     success: bool
     content: str
+
+@dataclass
+class MessageRecord:
+    user_input : str
+    intent : str
+    response : str
