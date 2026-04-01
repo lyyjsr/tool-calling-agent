@@ -1,5 +1,28 @@
-.venv/
+# Python
 __pycache__/
-.idea/
+*.py[cod]
+*.pyo
+*.pyd
 .pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Local env
 .env
+
+# SQLite
+*.db
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db
