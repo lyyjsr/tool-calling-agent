@@ -18,7 +18,7 @@ class ChatSession(Base):
     id = Column(Integer, primary_key=True, index=True)
     session_id = Column(String(100), unique=True, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow,onupdate=datetime.utcnow, nullable=False)
 
     # 一个会话可以对应多条消息
     messages = relationship("Message", back_populates="session")
