@@ -54,3 +54,45 @@ class Message(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     session = relationship("ChatSession", back_populates="messages")
+
+class Task(Base):
+    """
+    工程协作任务表。
+    Day 5 先做最小字段集合，够支持创建、查询和简历项目展示。
+    """
+    __tablename__ = "tasks"
+
+    id = Column(Integer,primary_key=True,index=True)
+
+    # 给业务和用户看的任务编号，例如 TASK-000001
+    task_id = Column(String(50),unique=True,nullable=False,index=True)
+
+    title = Column(String(200),nullable=False)
+    description = Column(Text,nullable=False)
+
+    status = Column(String(50), nullable=False, default="open") #任务状态，先默认 open
+    priority = Column(String(20), nullable=False, default="medium") #优先级，先支持 low / medium / high
+
+    created_by_session_id = Column(String(100), nullable=True, index=True)
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(
+        DateTime,
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        nullable=False,
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+

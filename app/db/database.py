@@ -33,10 +33,6 @@ Base = declarative_base()
 
 
 def get_db():
-    """
-    预留给后面 FastAPI 依赖注入使用。
-    现在 Day 3 先不用它做业务查询，但先把标准写法放好。
-    """
     db = SessionLocal()
     try:
         yield db

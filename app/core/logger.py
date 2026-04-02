@@ -24,14 +24,18 @@ def setup_logger() -> logging.Logger:
 
     logger.setLevel(settings.log_level)
 
+    #创建输出通道
     handler = logging.StreamHandler(sys.stdout)
+    # 定义日志格式
     formatter = logging.Formatter(
         fmt="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
+    # 给handler绑定格式
     handler.setFormatter(formatter)
 
     logger.addHandler(handler)
+    # 关闭向上传播
     logger.propagate = False
 
     return logger
