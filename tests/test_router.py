@@ -1,4 +1,4 @@
-from app.servises.router import detect_route
+from app.services.router import detect_route
 
 def test_detect_greet()->None:
     decision = detect_route("你好")
