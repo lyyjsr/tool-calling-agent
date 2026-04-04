@@ -26,9 +26,13 @@ class Settings:
     app_env: str
     app_debug: bool
     log_level: str
+
+    llm_enabled:bool
+
     openai_api_key: str | None
     openai_base_url: str | None
     openai_model: str
+
     database_url: str
 
 
@@ -43,8 +47,12 @@ def get_settings() -> Settings:
         app_env=os.getenv("APP_ENV", "dev"),
         app_debug=_to_bool(os.getenv("APP_DEBUG"), default=True),
         log_level=os.getenv("LOG_LEVEL", "INFO").upper(),
+
+        llm_enabled=_to_bool(os.getenv("LLM_ENABLED"),default=False),
+
         openai_api_key=os.getenv("OPENAI_API_KEY"),
         openai_base_url=os.getenv("OPENAI_BASE_URL"),
         openai_model=os.getenv("OPENAI_MODEL"),
+
         database_url=os.getenv("DATABASE_URL", "sqlite:///./app.db"),
     )
