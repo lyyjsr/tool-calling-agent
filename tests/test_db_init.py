@@ -13,3 +13,4 @@ def test_init_db_creates_required_tables() -> None:
     assert "sessions" in table_names
     assert "messages" in table_names
     assert "tasks" in table_names
+    assert "review_tasks" in table_names

@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from app.db.chat_store import save_chat_turn
 from app.db.database import get_db
+from app.repositories.review_repository import create_review_task
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.services.orchestrator import orchestrate_chat
 
@@ -15,12 +16,12 @@ router = APIRouter()
 @router.post("/chat",response_model=ChatResponse)
 def chat(payload:ChatRequest,db:Session=Depends(get_db))->ChatResponse:
     """
-    Day 10 版本的 /chat：
-    chat 路由只负责：
+    Day 12 版本的 /chat：
     1. 接收请求
     2. 调用 orchestrator 获取业务结果
     3. 将这轮对话落库
-    4. 返回响应
+    4. 如有需要，自动创建 review task
+    5. 返回响应
     """
     trace_id = str(uuid4())
     result = orchestrate_chat(payload.message)
@@ -33,6 +34,15 @@ def chat(payload:ChatRequest,db:Session=Depends(get_db))->ChatResponse:
         answer=result.answer,
         trace_id=trace_id,
     )
+
+    if result.requires_review and result.review_reason:
+        create_review_task(
+            db = db,
+            session_id=payload.session_id,
+            reason=result.review_reason,
+            draft_answer=result.answer,
+            message_id=None,
+        )
 
     return ChatResponse(
         trace_id=trace_id,
