@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import json
 import logging
 import sys
+from datetime import datetime
 
 from app.core.config import get_settings
 
@@ -39,3 +41,28 @@ def setup_logger() -> logging.Logger:
     logger.propagate = False
 
     return logger
+
+def log_event(logger:logging.Logger,level:str,event:str,**fields:object)->None:
+    """
+    用统一 JSON 风格输出日志事件。
+
+    例如：
+    log_event(logger, "info", "chat_processed", trace_id="xxx", session_id="demo-1")
+    """
+    payload = {
+        "event":event,
+        **fields,
+    }
+    message = json.dumps(payload, ensure_ascii=False, default=_json_default)
+    log_method = getattr(logger,level.lower(),logger.info)
+    log_method(message)
+
+
+def _json_default(value: object) -> str:
+    """
+    让 datetime 等对象在 json.dumps 时也能被安全转换。
+    """
+    if isinstance(value, datetime):
+        return value.isoformat()
+
+    return str(value)
